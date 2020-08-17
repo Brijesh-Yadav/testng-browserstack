@@ -1,4 +1,4 @@
-name: Integrations
+name: main yaml
 on:
   push:
     branches:
@@ -10,15 +10,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1.2.0
       - name: Install
-        uses: ianwalter/bsl@v2.0.1
+        uses: Brijesh-Yadav/testng-browserstack@v2.0.1
         with:
           args: yarn
       - name: Lint
-        uses: ianwalter/bsl@v2.0.1
+        uses: Brijesh-Yadav/testng-browserstack@v2.0.1
         with:
           args: yarn lint
       - name: Test 2
-        uses: ianwalter/bsl@v2.0.1
+        uses: Brijesh-Yadav/testng-browserstack@v2.0.1
         with:
           args: yarn test
         env:
