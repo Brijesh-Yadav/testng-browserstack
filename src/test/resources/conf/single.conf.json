@@ -1,7 +1,7 @@
 {
   "server": "hub-cloud.browserstack.com",
-  "user": ${{ secrets.BROWSERSTACK_ACCESS_KEY }},
-  "key": ${{ secrets.BROWSERSTACK_USERNAME }},
+  "user": "brijeshyadav1",
+  "key": "yD8bxSjMcKWDZ4bJ9xhh",
 
   "capabilities": {
     "build": "testng-browserstack",
