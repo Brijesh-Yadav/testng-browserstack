@@ -1,26 +1,18 @@
-name: main yaml
+name: Java CI with Maven
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 jobs:
-  browserstack:
+  compile:
     runs-on: ubuntu-latest
+    name: Running Java ${{ matrix.java }} compile
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1.2.0
-      - name: Install
-        uses: Brijesh-Yadav/testng-browserstack@v2.0.1
-        with:
-          args: yarn
-      - name: Lint
-        uses: Brijesh-Yadav/testng-browserstack@v2.0.1
-        with:
-          args: yarn lint
-      - name: Test 2
-        uses: Brijesh-Yadav/testng-browserstack@v2.0.1
-        with:
-          args: yarn test
-        env:
-          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+    - uses: actions/checkout@v2
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - name: Compile code
+      run: mvn compile
