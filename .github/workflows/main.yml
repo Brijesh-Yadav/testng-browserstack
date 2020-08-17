@@ -1,11 +1,26 @@
-name: A workflow for my Hello World file
-on: push
+name: Integrations
+on:
+  push:
+    branches:
+      - master
 jobs:
-  build:
-    name: Hello world action
+  browserstack:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: ./action-a
+      - name: Checkout
+        uses: actions/checkout@v1.2.0
+      - name: Install
+        uses: ianwalter/bsl@v2.0.1
         with:
-          MY_NAME: "Mona"
+          args: yarn
+      - name: Lint
+        uses: ianwalter/bsl@v2.0.1
+        with:
+          args: yarn lint
+      - name: Test 2
+        uses: ianwalter/bsl@v2.0.1
+        with:
+          args: yarn test
+        env:
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
