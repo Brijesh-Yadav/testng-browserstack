@@ -23,7 +23,9 @@ public class BrowserStackTestNGTest {
     @BeforeMethod(alwaysRun = true)
     @org.testng.annotations.Parameters(value = { "config", "environment" })
     @SuppressWarnings("unchecked")
-    public void setUp(String config_file, String environment) throws Exception {
+    public void setUp() throws Exception {
+        String config_file= "single.conf.json";
+    	String environment = "chrome";
         JSONParser parser = new JSONParser();
         JSONObject config = (JSONObject) parser.parse(new FileReader("src/test/resources/conf/" + config_file));
         JSONObject envs = (JSONObject) config.get("environments");
