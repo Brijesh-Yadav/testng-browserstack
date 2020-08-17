@@ -6,6 +6,8 @@
         <parameter name="environment" value="chrome"/>
         <classes>
             <class name="com.browserstack.SingleTest"/>
+            <class name="com.browserstack.suite.SuiteTest01"/>
+            <class name="com.browserstack.suite.SuiteTest02"/>
         </classes>
     </test>
 </suite>
